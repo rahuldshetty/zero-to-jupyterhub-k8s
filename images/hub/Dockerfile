@@ -15,9 +15,6 @@ RUN apt-get install -y git
 RUN python3.8 -m pip install pip --upgrade
 RUN python3.8 -m pip install wheel
 
-RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6.9
-RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8
-
 RUN python3 --version
 
 RUN apt-get update && \
