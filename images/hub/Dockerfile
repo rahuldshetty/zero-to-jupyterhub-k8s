@@ -6,8 +6,8 @@ ARG JUPYTERHUB_VERSION=1.1.*
 
 # Install Python 3.8
 RUN apt update
-RUN apt upgrade
-RUN apt dist-upgrade
+RUN apt -y upgrade
+RUN apt -y dist-upgrade
 RUN apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
 RUN wget https://www.python.org/ftp/python/3.8.1/Python-3.8.1.tgz
 RUN  make install
