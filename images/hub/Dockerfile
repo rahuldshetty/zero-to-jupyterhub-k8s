@@ -9,7 +9,7 @@ RUN apt update
 RUN apt -y upgrade
 RUN apt -y dist-upgrade
 RUN apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
-RUN mkdir /tmp
+RUN mkdir -p /tmp
 WORKDIR /tmp
 RUN wget https://www.python.org/ftp/python/3.8.1/Python-3.8.1.tgz
 RUN tar -xf Python-3.8.1.tgz
