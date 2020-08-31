@@ -15,6 +15,10 @@ RUN apt-get install -y git
 RUN python3.8 -m pip install pip --upgrade
 RUN python3.8 -m pip install wheel
 
+# add links
+RUN rm /usr/bin/python3
+RUN ln /usr/bin/python3.8 /usr/bin/python3 
+
 RUN python3 --version
 
 RUN apt-get update && \
