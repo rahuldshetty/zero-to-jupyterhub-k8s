@@ -4,16 +4,30 @@ FROM ubuntu:18.04
 ##       chartpress.yaml configuration
 ARG JUPYTERHUB_VERSION=1.1.*
 
+# Install Python 3.8
+RUN apt-get update && \
+  apt-get install -y software-properties-common && \
+  add-apt-repository ppa:jonathonf/python-3.8
+RUN apt-get update
+
+RUN apt-get install -y build-essential python3.8 python3.8-dev python3-pip python3.8-venv
+RUN apt-get install -y git
+# update pip
+RUN python3.8 -m pip install pip --upgrade
+RUN python3.8 -m pip install wheel
+
+RUN apt-get install -y build-essential python3.6 python3.6-dev python3-pip python3.6-venv
+
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       git \
       vim \
       less \
-      python3 \
-      python3-dev \
-      python3-pip \
-      python3-setuptools \
-      python3-wheel \
+#       python3 \
+#       python3-dev \
+#       python3-pip \
+#       python3-setuptools \
+#       python3-wheel \
       libssl-dev \
       libcurl4-openssl-dev \
       build-essential \
