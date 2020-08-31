@@ -5,16 +5,12 @@ FROM ubuntu:18.04
 ARG JUPYTERHUB_VERSION=1.1.*
 
 # Install Python 3.8
-RUN apt-get update && \
-  apt-get install -y software-properties-common && \
-  add-apt-repository ppa:deadsnakes/ppa
-RUN apt-get update
-
-RUN apt-get install -y build-essential python3.8 python3.8-dev python3-pip python3.8-venv
-RUN apt-get install -y git
-# update pip
-RUN python3.8 -m pip install pip --upgrade
-RUN python3.8 -m pip install wheel
+RUN apt update
+RUN apt upgrade
+RUN apt dist-upgrade
+RUN apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
+RUN wget https://www.python.org/ftp/python/3.8.1/Python-3.8.1.tgz
+RUN  make install
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
