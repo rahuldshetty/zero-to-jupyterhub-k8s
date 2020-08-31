@@ -4,10 +4,15 @@ FROM ubuntu:18.04
 ##       chartpress.yaml configuration
 ARG JUPYTERHUB_VERSION=1.1.*
 
+# Uninstall older versions of python and python3
+RUN apt purge remove python
+RUN apt purge python3
+
+
 # Install Python 3.8
 RUN apt-get update && \
   apt-get install -y software-properties-common && \
-  add-apt-repository ppa:jonathonf/python-3.8
+  add-apt-repository ppa:deadsnakes/ppa
 RUN apt-get update
 
 RUN apt-get install -y build-essential python3.8 python3.8-dev python3-pip python3.8-venv
