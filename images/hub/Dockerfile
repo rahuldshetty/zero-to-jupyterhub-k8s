@@ -5,17 +5,20 @@ FROM ubuntu:18.04
 ARG JUPYTERHUB_VERSION=1.1.*
 
 # Install Python 3.8
-RUN apt update
-RUN apt -y upgrade
-RUN apt -y dist-upgrade
-RUN apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
-RUN mkdir -p /tmp
-WORKDIR /tmp
-RUN wget https://www.python.org/ftp/python/3.8.1/Python-3.8.1.tgz
-RUN tar -xf Python-3.8.1.tgz
-WORKDIR Python-3.8.1
+RUN apt-get update && \
+  apt-get install -y software-properties-common && \
+  add-apt-repository ppa:deadsnakes/ppa
 
-RUN  make install
+RUN apt-get install -y python3.8 python3.8-dev python3-pip python3.8-venv
+RUN apt-get install -y git
+# update pip
+RUN python3.8 -m pip install pip --upgrade
+RUN python3.8 -m pip install wheel
+
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6.9
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8
+
+RUN python3 --version
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
