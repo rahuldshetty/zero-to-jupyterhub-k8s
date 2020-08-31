@@ -5,9 +5,7 @@ FROM ubuntu:18.04
 ARG JUPYTERHUB_VERSION=1.1.*
 
 # Uninstall older versions of python and python3
-RUN apt purge remove python
 RUN apt purge python3
-
 
 # Install Python 3.8
 RUN apt-get update && \
