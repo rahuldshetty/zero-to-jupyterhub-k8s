@@ -53,6 +53,9 @@ RUN PYCURL_SSL_LIBRARY=openssl pip3 install --no-cache-dir \
             echo jupyterhub==${JUPYTERHUB_VERSION}; \
           fi')
 
+# Installling Custom Authenticator
+RUN pip install git+https://github.com/rahuldshetty/jupyterhub-one-time-auth.git
+
 WORKDIR /srv/jupyterhub
 
 # So we can actually write a db file here
