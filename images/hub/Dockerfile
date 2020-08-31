@@ -4,9 +4,6 @@ FROM ubuntu:18.04
 ##       chartpress.yaml configuration
 ARG JUPYTERHUB_VERSION=1.1.*
 
-# Uninstall older versions of python and python3
-RUN apt purge python3
-
 # Install Python 3.8
 RUN apt-get update && \
   apt-get install -y software-properties-common && \
